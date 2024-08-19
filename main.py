@@ -4,11 +4,14 @@ from flask import Flask, jsonify, request
 
 from tools import sign_in_with_email_and_password, verify_token
 
+PATH_CRED_CERT = 'jooba-demo-firebase-adminsdk.json'
+DATABASE_URL = 'https://jooba-demo-default-rtdb.europe-west1.firebasedatabase.app/'
+
 app = Flask(__name__)
 
-cred = credentials.Certificate('jooba-demo-firebase-adminsdk.json')
+cred = credentials.Certificate(PATH_CRED_CERT)
 firebase_admin = firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://jooba-demo-default-rtdb.europe-west1.firebasedatabase.app/'
+    'databaseURL': DATABASE_URL
 })
 
 
